@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='recipes.css') }}">
+
+</head>
+<body>
+    <header>
+        <h1>Welcome {{usuarioLogeado[0]['first_name']}}!</h1>
+        <div class="flexbox">
+            <a href="/recipes">back to recipes</a>
+            <a href="/logout">Log out</a>
+        </div>
+    </header>
+
+    <div id="bigcolumn">
+
+        <h2 class="titulo">{{recipe[0]['name']}}</h2>
+        <p><span style="font-weight:bold ;">Description:</span> {{recipe[0]['description']}}</p><br>
+        {%if recipe[0]['under_30'] == "1"%}
+            <p><span style="font-weight:bold ;">Cooked under 30 minutes?:</span> YES</p>
+        {%else%}
+            <p><span style="font-weight:bold ;">Cooked under 30 minutes?:</span> NO</p>
+        {%endif%}
+        <br><p style="font-weight:bold;">Instructions:</p>
+        <p>{{recipe[0]['instructions']}}</p>
+        <br><p style="font-weight:bold;">Date cooked:</p>
+        <p>{{recipe[0]['date_cooked']}}</p>
+        
+        
+        <a href="/users/new">Add a new user</a>
+    </div>
+</body>
+</html>
